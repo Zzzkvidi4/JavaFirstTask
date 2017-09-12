@@ -14,4 +14,20 @@ public class AddProductCommand extends Command {
     public void execute(){
 
     }
+
+    class AddMedidcineCommand extends Command {
+        public AddMedidcineCommand(String title){
+            super(title);
+        }
+
+        @Override
+        public void execute() {
+            try {
+                HelpUtils.getStringCLI("Input category of medicine: ");
+            }
+            catch (AbortOperationException ex){
+
+            }
+        }
+    }
 }
