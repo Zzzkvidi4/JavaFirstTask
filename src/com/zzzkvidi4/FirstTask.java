@@ -1,6 +1,8 @@
 package com.zzzkvidi4;
 
 
+import java.util.Iterator;
+
 /*
 "Написать программу (CLI, GUI) для работы со списком товаров магазина.
 
@@ -28,6 +30,13 @@ package com.zzzkvidi4;
  */
 public class FirstTask {
     public static void main(String[] args){
+        ProductList productList = new ProductList();
+        productList.add(new Medicine("Амоксиклав", 20.45));
+        productList.add(new Food("Пицца", 100));
+        Iterator<Product> iter = productList.iterator();
+        while (iter.hasNext()){
+            System.out.println(iter.next().toString());
+        }
         System.out.println("Hello, World!");
     }
 }
