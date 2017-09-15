@@ -1,27 +1,27 @@
-package com.zzzkvidi4;
+package com.zzzkvidi4.validator;
 
 /**
  * Created by Роман on 14.09.2017.
  */
-abstract class BasicValidator<T> {
+public abstract class BasicValidator<T> {
     public BasicValidator(String validationFailsMsg, T initialValue){
         this.validationFailsMsg = validationFailsMsg;
         this.initialValue = initialValue;
     }
 
-    abstract boolean validate(T value);
+    public abstract boolean validate(T value);
 
     private String validationFailsMsg;
 
-    String message(){
+    public String message(){
         return validationFailsMsg;
     }
 
     private T initialValue;
 
-    T initialValue(){
+    public T initialValue(){
         return initialValue;
     }
 
-    abstract T cast(String value);
+    public abstract T cast(String value);
 }

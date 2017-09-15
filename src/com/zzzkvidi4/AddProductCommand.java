@@ -1,5 +1,7 @@
 package com.zzzkvidi4;
 
+import com.zzzkvidi4.validator.BasicValidator;
+
 import java.util.List;
 
 public class AddProductCommand extends Command {
@@ -26,13 +28,13 @@ public class AddProductCommand extends Command {
                 HelpUtils<Integer> intGetter = new HelpUtils<>();
                 int val = intGetter.getValueCLI("Введите число:", new BasicValidator<Integer>("some", 0) {
                     @Override
-                    boolean validate(Integer value) {
+                    public boolean validate(Integer value) {
                         int tmp = value;
                         return tmp > 0;
                     }
 
                     @Override
-                    Integer cast(String value) {
+                    public Integer cast(String value) {
                         return Integer.valueOf(value);
                     }
                 });
