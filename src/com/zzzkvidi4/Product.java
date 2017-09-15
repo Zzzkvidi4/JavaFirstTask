@@ -9,11 +9,20 @@ public abstract class Product {
     Product(String title, double price){
         this.title = title;
         setPrice(price);
-        initialize();
+        count++;
+    }
+
+    Product(){
+        this.title = "";
+        setPrice(1);
         count++;
     }
 
     private String title;
+
+    void setTitle(String title) {
+        this.title = title;
+    }
 
     String getTitle() {
         return title;
@@ -34,8 +43,6 @@ public abstract class Product {
 
     @Override
     public abstract String toString();
-
-    protected abstract void initialize();
 
     public abstract int getId();
 }

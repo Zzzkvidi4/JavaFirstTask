@@ -4,25 +4,25 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class HelpUtils {
+public class HelpUtils<T> {
     private static String abortString = "";
 
-    static int getChoiceCLI(String title, int minValue, int maxValue) throws AbortOperationException{
+    T getValueCLI(String title, BasicValidator<T> validator) throws AbortOperationException{
         String buf;
         boolean isInputCorrect = false;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int choice = Integer.MIN_VALUE;
+        T value = validator.initialValue();
         while (!isInputCorrect){
             System.out.println(title);
             try {
                 buf = reader.readLine();
-                if (buf.equals("abort")){
+                if (buf.equals(abortString)){
                     throw new AbortOperationException();
                 }
-                choice = Integer.parseInt(buf);
-                isInputCorrect = (choice >= minValue) && (choice <= maxValue);
+                value = validator.cast(buf);
+                isInputCorrect = validator.validate(value);
                 if (!isInputCorrect) {
-                    System.out.println("Число должно быть в диапазоне от " + String.valueOf(minValue) + " и до " + String.valueOf(maxValue) + ".");
+                    System.out.println(validator.message());
                 }
             }
             catch(IOException e){
@@ -32,37 +32,6 @@ public class HelpUtils {
                 System.out.println("Внимание, вы ввели не число!");
             }
         }
-        return choice;
-    }
-
-    public static int getChoiceCLI(String title, int maxValue) throws AbortOperationException {
-        return getChoiceCLI(title, 1, maxValue);
-    }
-
-    static String getStringCLI(String title) throws AbortOperationException {
-        String buf = "";
-        boolean isInputCorrect = false;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        while (!isInputCorrect){
-            System.out.println(title);
-            try {
-                buf = reader.readLine();
-                if (buf.equals("abort")){
-                    throw new AbortOperationException();
-                }
-                isInputCorrect = !buf.equals("");
-                if (!isInputCorrect) {
-                    System.out.println("Строка не должна быть пустой!");
-                }
-            }
-            catch(IOException e){
-                System.out.println("Внимание, произошла ошибка ввода!");
-            }
-        }
-        return buf;
-    }
-
-    public static void setAbortString(String abort){
-        abortString = abort;
+        return value;
     }
 }

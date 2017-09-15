@@ -38,6 +38,5 @@ public class FirstTask {
             System.out.println(iter.next().toString());
         }
         System.out.println("Hello, World!");
-        HelpUtils.getChoiceCLI("Write a number: ", 0, 10);
     }
 }

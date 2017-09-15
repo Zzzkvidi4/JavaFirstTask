@@ -23,7 +23,20 @@ public class AddProductCommand extends Command {
         @Override
         public void execute() {
             try {
-                HelpUtils.getStringCLI("Input category of medicine: ");
+                HelpUtils<Integer> intGetter = new HelpUtils<>();
+                int val = intGetter.getValueCLI("Введите число:", new BasicValidator<Integer>("some", 0) {
+                    @Override
+                    boolean validate(Integer value) {
+                        int tmp = value;
+                        return tmp > 0;
+                    }
+
+                    @Override
+                    Integer cast(String value) {
+                        return Integer.valueOf(value);
+                    }
+                });
+                Medicine medicine = new Medicine();
             }
             catch (AbortOperationException ex){
 

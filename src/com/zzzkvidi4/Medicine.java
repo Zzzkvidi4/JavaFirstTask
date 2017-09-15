@@ -3,6 +3,12 @@ package com.zzzkvidi4;
 public class Medicine extends Product {
     private int id;
 
+    Medicine(){
+        super();
+        this.id = count;
+        this.category = "";
+    }
+
     Medicine(String title, double price){
         super(title, price);
         this.id = count;
@@ -11,11 +17,6 @@ public class Medicine extends Product {
     @Override
     public String toString() {
         return getId() + " " + getTitle() + " " + getPrice();
-    }
-
-    @Override
-    protected void initialize() {
-
     }
 
     private String category;

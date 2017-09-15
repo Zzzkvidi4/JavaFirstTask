@@ -16,11 +16,6 @@ public class Food extends Product {
     }
 
     @Override
-    protected void initialize() {
-
-    }
-
-    @Override
     public int getId() {
         return id;
     }
