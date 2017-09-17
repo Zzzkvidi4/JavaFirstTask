@@ -11,9 +11,9 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class AddProductCommand extends Command {
-    private List<Product> productList;
+    private ProductList<Product> productList;
 
-    public AddProductCommand(String title, List<Product> productList){
+    public AddProductCommand(String title, ProductList<Product> productList){
         super(title);
         this.productList = productList;
     }
@@ -25,9 +25,23 @@ public class AddProductCommand extends Command {
 
     @Override
     public void execute(){
+        HelpUtils<Integer> intGetterCLI = new HelpUtils<>();
         CommandList commands = new CommandList();
         commands.addCommand(new AddMedicineCommand("Добавить новое лекарство."));
         commands.addCommand(new AddFoodCommand("Добавить новый продукт питания."));
+        int cmdNumber = 0;
+        do {
+            commands.printCommandTitles("Выберите один из пунктов меню: ");
+            try {
+                cmdNumber = intGetterCLI.getValueCLI(">", new IntegerBetweenBoundariesValidator("Число должно быть между 0 и " + commands.actualSize() + "!", 0, commands.actualSize()));
+                if ((cmdNumber >= 1) && (cmdNumber <= commands.actualSize())) {
+                    commands.executeCommand(cmdNumber - 1);
+                }
+            }
+            catch(AbortOperationException ex){
+                System.out.println(ex.getMessage());
+            }
+        } while (cmdNumber != 0);
     }
 
     class AddMedicineCommand extends Command {

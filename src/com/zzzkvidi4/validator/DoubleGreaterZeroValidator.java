@@ -7,7 +7,7 @@ public class DoubleGreaterZeroValidator extends BasicValidator<Double> {
 
     @Override
     public boolean validate(Double value) {
-        return Math.abs(value) < Double.MIN_VALUE ;
+        return Math.abs(value) > Double.MIN_VALUE ;
     }
 
     @Override

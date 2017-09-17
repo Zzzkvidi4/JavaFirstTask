@@ -15,6 +15,6 @@ public class IntegerBetweenBoundariesValidator extends BasicValidator<Integer> {
 
     @Override
     public Integer cast(String value) {
-        return null;
+        return Integer.valueOf(value);
     }
 }

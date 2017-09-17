@@ -1,6 +1,8 @@
 package com.zzzkvidi4;
 
 
+import com.zzzkvidi4.validator.IntegerBetweenBoundariesValidator;
+
 import java.util.Iterator;
 
 /*
@@ -30,13 +32,22 @@ import java.util.Iterator;
  */
 public class FirstTask {
     public static void main(String[] args){
-        ProductList productList = new ProductList();
-        productList.add(new Medicine("Амоксиклав", 20.45));
-        productList.add(new Food("Пицца", 100));
-        Iterator<Product> iter = productList.iterator();
-        while (iter.hasNext()){
-            System.out.println(iter.next().toString());
-        }
-        System.out.println("Hello, World!");
+        ProductList<Product> productList = new ProductList<>();
+        HelpUtils<Integer> intGetterCLI = new HelpUtils<>();
+        CommandList commands = new CommandList();
+        commands.addCommand(new AddProductCommand("Добавить продукт.", productList));
+        int cmdNumber = 0;
+        do {
+            commands.printCommandTitles("Выберите один из пунктов меню: ");
+            try {
+                cmdNumber = intGetterCLI.getValueCLI(">", new IntegerBetweenBoundariesValidator("Число должно быть между 0 и " + commands.actualSize() + "!", 0, commands.actualSize()));
+                if ((cmdNumber >= 1) && (cmdNumber <= commands.actualSize())) {
+                    commands.executeCommand(cmdNumber - 1);
+                }
+            }
+            catch(AbortOperationException ex){
+                System.out.println(ex.getMessage());
+            }
+        } while (cmdNumber != 0);
     }
 }

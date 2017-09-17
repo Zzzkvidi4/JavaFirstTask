@@ -11,8 +11,9 @@ public class CommandList {
         System.out.println(header);
         int i = 1;
         while (commandIterator.hasNext()){
-            if (commandIterator.next().isEnabled()) {
-                System.out.println(i + ". " + commandIterator.next().getTitle());
+            Command cmd = commandIterator.next();
+            if (cmd.isEnabled()) {
+                System.out.println(i + ". " + cmd.getTitle());
                 ++i;
             }
         }
@@ -31,7 +32,7 @@ public class CommandList {
     public void executeCommand(int index){
         int realIndex = -1;
         Iterator<Command> iterator = commandList.iterator();
-        while ((index > 0) && (iterator.hasNext())) {
+        while ((index >= 0) && (iterator.hasNext())) {
             if (iterator.next().isEnabled()){
                 --index;
             }
