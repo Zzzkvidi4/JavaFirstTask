@@ -1,23 +1,24 @@
 package com.zzzkvidi4;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.awt.List;
+import java.util.*;
+import java.util.function.Predicate;
 
-public class ProductList {
-    private ArrayList<Product> productList;
+public class ProductList<T> {
+    private ArrayList<T> productList;
 
     ProductList(){
         productList = new ArrayList<>();
     }
 
-    boolean add(Product product){
-        Iterator<Product> iter = productList.iterator();
+    boolean add(T item){
+        Iterator<T> iter = productList.iterator();
         boolean isAdded = true;
         while (iter.hasNext()&&isAdded){
-            isAdded = !(iter.next().equals(product));
+            isAdded = !(iter.next().equals(item));
         }
         if (isAdded) {
-            productList.add(product);
+            productList.add(item);
         }
         return isAdded;
     }
@@ -29,7 +30,21 @@ public class ProductList {
         productList.remove(index);
     }
 
-    Iterator<Product> iterator(){
+    public ProductList filter(Predicate<T> predicate){
+        ProductList list = new ProductList();
+        for (T item: productList) {
+            if (predicate.test(item)){
+                list.add(item);
+            }
+        }
+        return list;
+    }
+
+    public void sort(Comparator<T> comparator){
+        productList.sort(comparator);
+    }
+
+    Iterator<T> iterator(){
         return productList.iterator();
     }
 }

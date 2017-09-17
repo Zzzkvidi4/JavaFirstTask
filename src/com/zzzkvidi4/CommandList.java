@@ -11,15 +11,36 @@ public class CommandList {
         System.out.println(header);
         int i = 1;
         while (commandIterator.hasNext()){
-            System.out.println(i + ". " + commandIterator.next().getTitle());
+            if (commandIterator.next().isEnabled()) {
+                System.out.println(i + ". " + commandIterator.next().getTitle());
+                ++i;
+            }
         }
     }
 
-    public void executeCommand(int index){
-        commandList.get(index).execute();
+    public int actualSize() {
+        int size = 0;
+        for(Command cmd: commandList){
+            if (cmd.isEnabled()){
+                ++size;
+            }
+        }
+        return size;
     }
 
-    public void add(Command cmd){
+    public void executeCommand(int index){
+        int realIndex = -1;
+        Iterator<Command> iterator = commandList.iterator();
+        while ((index > 0) && (iterator.hasNext())) {
+            if (iterator.next().isEnabled()){
+                --index;
+            }
+            realIndex++;
+        }
+        commandList.get(realIndex).execute();
+    }
+
+    public void addCommand(Command cmd){
         commandList.add(cmd);
     }
 

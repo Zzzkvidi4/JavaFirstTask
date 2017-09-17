@@ -20,7 +20,10 @@ public abstract class Product {
 
     private String title;
 
-    void setTitle(String title) {
+    public void setTitle(String title) {
+        if (title.equals("")){
+            throw new IllegalArgumentException("Название не должно быть пустой строкой!");
+        }
         this.title = title;
     }
 
@@ -34,9 +37,9 @@ public abstract class Product {
         return price;
     }
 
-    private void setPrice(double price) throws IllegalArgumentException {
+    public void setPrice(double price) throws IllegalArgumentException {
         if (price <= 0) {
-            throw new IllegalArgumentException("Цена не должна быть меньше либо равна нулю");
+            throw new IllegalArgumentException("Цена не должна быть меньше либо равна нулю!");
         }
         this.price = price;
     }

@@ -13,5 +13,7 @@ public abstract class Command {
         return title;
     }
 
+    public abstract boolean isEnabled();
+
     public abstract void execute();
 }
