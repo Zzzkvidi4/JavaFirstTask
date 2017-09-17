@@ -19,7 +19,7 @@ public class HelpUtils<T> {
             try {
                 buf = reader.readLine();
                 if (buf.equals(abortString)){
-                    throw new AbortOperationException();
+                    throw new AbortOperationException("Отмена операции...");
                 }
                 value = validator.cast(buf);
                 isInputCorrect = validator.validate(value);

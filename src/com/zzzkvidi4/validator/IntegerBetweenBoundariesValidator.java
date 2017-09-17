@@ -1,8 +1,8 @@
 package com.zzzkvidi4.validator;
 
-public class IntegerBetweenBoudariesValidator extends BasicValidator<Integer> {
+public class IntegerBetweenBoundariesValidator extends BasicValidator<Integer> {
     private int leftBound, rightBound;
-    public IntegerBetweenBoudariesValidator(String validationFailsMsg, int leftBound, int rightBound){
+    public IntegerBetweenBoundariesValidator(String validationFailsMsg, int leftBound, int rightBound){
         super(validationFailsMsg, leftBound);
         this.leftBound = leftBound;
         this.rightBound = rightBound;

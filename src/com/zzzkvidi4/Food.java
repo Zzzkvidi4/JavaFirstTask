@@ -1,9 +1,14 @@
 package com.zzzkvidi4;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Food extends Product {
     private int id;
+
+    Food(){
+        super("", 1);
+        this.id = count;
+    }
 
     Food(String title, double price){
         super(title, price);
@@ -20,14 +25,14 @@ public class Food extends Product {
         return id;
     }
 
-    private Date dateOfManufacture;
+    private Calendar dateOfManufacture;
 
 
-    private Date getDateOfManufacture() {
+    private Calendar getDateOfManufacture() {
         return dateOfManufacture;
     }
 
-    public void setDateOfManufacture(Date dateOfManufacture) {
+    public void setDateOfManufacture(Calendar dateOfManufacture) {
         this.dateOfManufacture = dateOfManufacture;
     }
 }
