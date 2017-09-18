@@ -44,6 +44,10 @@ public class ProductList<T> {
         productList.sort(comparator);
     }
 
+    public int size(){
+        return productList.size();
+    }
+
     Iterator<T> iterator(){
         return productList.iterator();
     }

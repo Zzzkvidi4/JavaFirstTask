@@ -18,7 +18,7 @@ public class HelpUtils<T> {
             System.out.println(title);
             try {
                 buf = reader.readLine();
-                if (buf.equals(abortString)){
+                if ((validator.isAbortAllowed()) && (buf.equals(abortString))){
                     throw new AbortOperationException("Отмена операции...");
                 }
                 value = validator.cast(buf);

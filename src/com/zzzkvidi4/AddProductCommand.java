@@ -31,9 +31,9 @@ public class AddProductCommand extends Command {
         commands.addCommand(new AddFoodCommand("Добавить новый продукт питания."));
         int cmdNumber = 0;
         do {
-            commands.printCommandTitles("Выберите один из пунктов меню: ");
+            commands.printCommandTitles("Меню: ");
             try {
-                cmdNumber = intGetterCLI.getValueCLI(">", new IntegerBetweenBoundariesValidator("Число должно быть между 0 и " + commands.actualSize() + "!", 0, commands.actualSize()));
+                cmdNumber = intGetterCLI.getValueCLI("Выберите один из пунктов меню: ", new IntegerBetweenBoundariesValidator("Число должно быть между 0 и " + commands.actualSize() + "!", 0, commands.actualSize()));
                 if ((cmdNumber >= 1) && (cmdNumber <= commands.actualSize())) {
                     commands.executeCommand(cmdNumber - 1);
                 }

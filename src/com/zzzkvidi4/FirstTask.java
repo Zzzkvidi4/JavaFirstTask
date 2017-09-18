@@ -36,11 +36,12 @@ public class FirstTask {
         HelpUtils<Integer> intGetterCLI = new HelpUtils<>();
         CommandList commands = new CommandList();
         commands.addCommand(new AddProductCommand("Добавить продукт.", productList));
+        commands.addCommand(new DeleteProductCommand<>("Удалить продукт.", productList));
         int cmdNumber = 0;
         do {
             commands.printCommandTitles("Выберите один из пунктов меню: ");
             try {
-                cmdNumber = intGetterCLI.getValueCLI(">", new IntegerBetweenBoundariesValidator("Число должно быть между 0 и " + commands.actualSize() + "!", 0, commands.actualSize()));
+                cmdNumber = intGetterCLI.getValueCLI(">", new IntegerBetweenBoundariesValidator("Число должно быть между 0 и " + commands.actualSize() + "!", false, 0, commands.actualSize()));
                 if ((cmdNumber >= 1) && (cmdNumber <= commands.actualSize())) {
                     commands.executeCommand(cmdNumber - 1);
                 }
