@@ -1,4 +1,4 @@
-package com.zzzkvidi4;
+package com.zzzkvidi4.command;
 
 import java.util.ArrayList;
 import java.util.Iterator;

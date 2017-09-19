@@ -1,9 +1,10 @@
 package com.zzzkvidi4;
 
 
+import com.zzzkvidi4.command.AddProductCommand;
+import com.zzzkvidi4.command.CommandList;
+import com.zzzkvidi4.command.DeleteProductCommand;
 import com.zzzkvidi4.validator.IntegerBetweenBoundariesValidator;
-
-import java.util.Iterator;
 
 /*
 "Написать программу (CLI, GUI) для работы со списком товаров магазина.

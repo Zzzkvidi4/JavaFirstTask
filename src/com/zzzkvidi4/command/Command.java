@@ -1,4 +1,4 @@
-package com.zzzkvidi4;
+package com.zzzkvidi4.command;
 
 public abstract class Command {
 

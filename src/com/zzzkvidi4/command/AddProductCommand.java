@@ -1,14 +1,13 @@
-package com.zzzkvidi4;
+package com.zzzkvidi4.command;
 
+import com.zzzkvidi4.*;
 import com.zzzkvidi4.validator.DoubleGreaterZeroValidator;
 import com.zzzkvidi4.validator.IntegerBetweenBoundariesValidator;
 import com.zzzkvidi4.validator.IntegerGreaterZeroValidator;
 import com.zzzkvidi4.validator.StringNotEmptyValidator;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 public class AddProductCommand extends Command {
     private ProductList<Product> productList;

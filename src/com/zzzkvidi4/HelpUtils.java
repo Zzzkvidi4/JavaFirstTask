@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 public class HelpUtils<T> {
     private static String abortString = "";
 
-    T getValueCLI(String title, BasicValidator<T> validator) throws AbortOperationException{
+    public T getValueCLI(String title, BasicValidator<T> validator) throws AbortOperationException{
         String buf;
         boolean isInputCorrect = false;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
