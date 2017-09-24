@@ -43,4 +43,13 @@ public class ProductList {
     public Iterator<Product> iterator(){
         return productList.iterator();
     }
+
+    public Product get(int id) {
+        for (Product product: productList) {
+            if (product.getId() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
 }
