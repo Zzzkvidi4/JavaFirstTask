@@ -5,12 +5,12 @@ import java.util.Calendar;
 public class Food extends Product {
     private int id;
 
-    Food(){
+    public Food(){
         super("", 1);
         this.id = count;
     }
 
-    Food(String title, double price){
+    public Food(String title, double price){
         super(title, price);
         this.id = count;
     }

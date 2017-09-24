@@ -3,13 +3,13 @@ package com.zzzkvidi4;
 public class Medicine extends Product {
     private int id;
 
-    Medicine(){
+    public Medicine(){
         super();
         this.id = count;
         this.category = "";
     }
 
-    Medicine(String title, double price){
+    public Medicine(String title, double price){
         super(title, price);
         this.id = count;
     }

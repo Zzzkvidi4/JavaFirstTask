@@ -4,6 +4,7 @@ package com.zzzkvidi4;
 import com.zzzkvidi4.command.AddProductCommand;
 import com.zzzkvidi4.command.CommandList;
 import com.zzzkvidi4.command.DeleteProductCommand;
+import com.zzzkvidi4.command.RemoveByIDCommand;
 import com.zzzkvidi4.validator.IntegerBetweenBoundariesValidator;
 
 /*
@@ -37,12 +38,15 @@ public class FirstTask {
         HelpUtils<Integer> intGetterCLI = new HelpUtils<>();
         CommandList commands = new CommandList();
         commands.addCommand(new AddProductCommand("Добавить продукт.", productList));
-        commands.addCommand(new DeleteProductCommand<>("Удалить продукт.", productList));
+        commands.addCommand(new DeleteProductCommand<>("Удалить продукт по индексу.", productList));
+        commands.addCommand(new RemoveByIDCommand("Удалить продукт по id.", productList));
         int cmdNumber = 0;
         do {
             commands.printCommandTitles("Выберите один из пунктов меню: ");
             try {
-                cmdNumber = intGetterCLI.getValueCLI(">", new IntegerBetweenBoundariesValidator("Число должно быть между 0 и " + commands.actualSize() + "!", false, 0, commands.actualSize()));
+                cmdNumber = intGetterCLI.getValueCLI(">",
+                        new IntegerBetweenBoundariesValidator("Число должно быть между 0 и " + commands.actualSize() + "!",
+                                false, 0, commands.actualSize()));
                 if ((cmdNumber >= 1) && (cmdNumber <= commands.actualSize())) {
                     commands.executeCommand(cmdNumber - 1);
                 }
