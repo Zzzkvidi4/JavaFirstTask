@@ -1,18 +1,17 @@
 package com.zzzkvidi4;
 
-import java.awt.List;
 import java.util.*;
 import java.util.function.Predicate;
 
-public class ProductList<T> {
-    private ArrayList<T> productList;
+public class ProductList {
+    private ArrayList<Product> productList;
 
     ProductList(){
         productList = new ArrayList<>();
     }
 
-    public boolean add(T item){
-        Iterator<T> iter = productList.iterator();
+    public boolean add(Product item){
+        Iterator<Product> iter = productList.iterator();
         boolean isAdded = true;
         while (iter.hasNext()&&isAdded){
             isAdded = !(iter.next().equals(item));
@@ -23,20 +22,17 @@ public class ProductList<T> {
         return isAdded;
     }
 
-    public void remove(int index) throws IllegalArgumentException{
-        if ((index < 0) || (index > productList.size())) {
-            throw new IllegalArgumentException("Индекс не должен быть меньше нуля или больше размера коллекции!");
-        }
-        productList.remove(index);
+    public void removeByID(int id) throws IllegalArgumentException{
+        productList.removeIf(product -> product.getId() == id);
     }
 
-    public ProductList filter(Predicate<T> predicate){
-        ProductList<T> list = new ProductList<>();
+    public ProductList filter(Predicate<Product> predicate){
+        ProductList list = new ProductList();
         productList.stream().filter(predicate).forEach(list::add);
         return list;
     }
 
-    public void sort(Comparator<T> comparator){
+    public void sort(Comparator<Product> comparator){
         productList.sort(comparator);
     }
 
@@ -44,7 +40,7 @@ public class ProductList<T> {
         return productList.size();
     }
 
-    Iterator<T> iterator(){
+    public Iterator<Product> iterator(){
         return productList.iterator();
     }
 }

@@ -1,28 +1,24 @@
 package com.zzzkvidi4;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Food extends Product {
-    private int id;
 
     public Food(){
-        super("", 1);
-        this.id = count;
+        super();
+        dateOfManufacture = new GregorianCalendar();
     }
 
-    public Food(String title, double price){
-        super(title, price);
-        this.id = count;
+    public Food(String title, BigDecimal price, int id){
+        super(title, price, id);
+        dateOfManufacture = new GregorianCalendar();
     }
 
     @Override
     public String toString() {
-        return getId() + " " + getTitle() + " " + getDateOfManufacture();
-    }
-
-    @Override
-    public int getId() {
-        return id;
+        return getId() + " " + getTitle() + " " + getDateOfManufacture().get(GregorianCalendar.DAY_OF_MONTH) + "." + (dateOfManufacture.get(GregorianCalendar.MONTH) + 1) + "." + dateOfManufacture.get(GregorianCalendar.YEAR);
     }
 
     private Calendar dateOfManufacture;

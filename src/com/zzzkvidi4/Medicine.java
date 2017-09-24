@@ -1,17 +1,15 @@
 package com.zzzkvidi4;
 
-public class Medicine extends Product {
-    private int id;
+import java.math.BigDecimal;
 
+public class Medicine extends Product {
     public Medicine(){
         super();
-        this.id = count;
         this.category = "";
     }
 
-    public Medicine(String title, double price){
-        super(title, price);
-        this.id = count;
+    public Medicine(String title, BigDecimal price, int id){
+        super(title, price, id);
     }
 
     @Override
@@ -27,10 +25,5 @@ public class Medicine extends Product {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-
-    public int getId() {
-        return id;
     }
 }

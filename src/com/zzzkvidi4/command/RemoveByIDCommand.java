@@ -12,9 +12,9 @@ import com.zzzkvidi4.validator.IntegerGreaterZeroValidator;
  * Created by Роман on 21.09.2017.
  */
 public class RemoveByIDCommand extends Command {
-    private ProductList<Product> productList;
+    private ProductList productList;
 
-    public RemoveByIDCommand(String title, ProductList<Product> productList){
+    public RemoveByIDCommand(String title, ProductList productList){
         super(title);
         this.productList = productList;
     }
@@ -30,7 +30,7 @@ public class RemoveByIDCommand extends Command {
         try{
             int removeId = intGetter.getValueCLI("Введите id продукта для удаления",
                     new IntegerGreaterZeroValidator("Id не может быть меньше нуля!", -1));
-            productList.removeBy(new ProductIDEqualsPredicate(removeId));
+            productList.removeByID(removeId);
         }
         catch(AbortOperationException ex) {
             System.out.println(ex.getMessage());

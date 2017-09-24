@@ -1,22 +1,25 @@
 package com.zzzkvidi4;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Роман on 11.09.2017.
  */
 public abstract class Product {
-    static int count = 0;
 
-    Product(String title, double price){
+    Product(String title, BigDecimal price, int id){
         this.title = title;
         setPrice(price);
-        count++;
+        this.price = price.setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.id = id;
     }
 
     Product(){
         this.title = "";
-        setPrice(1);
-        count++;
+        setPrice(new BigDecimal(1));
     }
+
+    private int id;
 
     private String title;
 
@@ -31,21 +34,28 @@ public abstract class Product {
         return title;
     }
 
-    private double price;
+    private BigDecimal price;
 
-    double getPrice() {
+    BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) throws IllegalArgumentException {
-        if (price <= 0) {
+    public void setPrice(BigDecimal price) throws IllegalArgumentException {
+        if (price.compareTo(new BigDecimal(0)) <= 0) {
             throw new IllegalArgumentException("Цена не должна быть меньше либо равна нулю!");
         }
         this.price = price;
+        this.price = price.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
     @Override
     public abstract String toString();
 
-    public abstract int getId();
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

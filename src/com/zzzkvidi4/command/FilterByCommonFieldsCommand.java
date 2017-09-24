@@ -7,9 +7,9 @@ import com.zzzkvidi4.ProductList;
  * Created by Роман on 21.09.2017.
  */
 public class FilterByCommonFieldsCommand extends Command {
-    private ProductList<Product> productList;
+    private ProductList productList;
 
-    public FilterByCommonFieldsCommand(String title, ProductList<Product> productList){
+    public FilterByCommonFieldsCommand(String title, ProductList productList){
         super(title);
         this.productList = productList;
     }

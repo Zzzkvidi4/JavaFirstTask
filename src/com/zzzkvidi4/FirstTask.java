@@ -1,10 +1,7 @@
 package com.zzzkvidi4;
 
 
-import com.zzzkvidi4.command.AddProductCommand;
-import com.zzzkvidi4.command.CommandList;
-import com.zzzkvidi4.command.DeleteProductCommand;
-import com.zzzkvidi4.command.RemoveByIDCommand;
+import com.zzzkvidi4.command.*;
 import com.zzzkvidi4.validator.IntegerBetweenBoundariesValidator;
 
 /*
@@ -34,12 +31,13 @@ import com.zzzkvidi4.validator.IntegerBetweenBoundariesValidator;
  */
 public class FirstTask {
     public static void main(String[] args){
-        ProductList<Product> productList = new ProductList<>();
+        ProductList productList = new ProductList();
         HelpUtils<Integer> intGetterCLI = new HelpUtils<>();
         CommandList commands = new CommandList();
         commands.addCommand(new AddProductCommand("Добавить продукт.", productList));
         commands.addCommand(new DeleteProductCommand<>("Удалить продукт по индексу.", productList));
         commands.addCommand(new RemoveByIDCommand("Удалить продукт по id.", productList));
+        commands.addCommand(new PrintListCommand("Показать список продуктов.", productList));
         int cmdNumber = 0;
         do {
             commands.printCommandTitles("Выберите один из пунктов меню: ");
