@@ -36,7 +36,7 @@ public abstract class Product {
 
     private BigDecimal price;
 
-    BigDecimal getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
