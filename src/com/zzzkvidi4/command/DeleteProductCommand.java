@@ -23,9 +23,8 @@ public class DeleteProductCommand<T> extends Command {
 
     @Override
     public void execute() {
-        HelpUtils<Integer> intGetterCLI =  new HelpUtils<>();
         try {
-            int index = intGetterCLI.getValueCLI("Введите номер продукта (от " + 1 + " до " + list.size() + ":", new IntegerBetweenBoundariesValidator("Число должно быть между 1 и " + list.size() + "!", 1, list.size()));
+            int index = HelpUtils.getValueCLI("Введите номер продукта (от " + 1 + " до " + list.size() + ":", new IntegerBetweenBoundariesValidator("Число должно быть между 1 и " + list.size() + "!", 1, list.size()));
             //list.remove(index - 1);
         }
         catch (AbortOperationException ex){

@@ -19,9 +19,8 @@ public class EditProductCommand extends Command {
     @Override
     public void execute() {
         System.out.println("Введите id элемента для изменения: ");
-        HelpUtils<Integer> intGetter = new HelpUtils<>();
         try {
-            int id = intGetter.getValueCLI("Введите id элемента для изменения:",
+            int id = HelpUtils.getValueCLI("Введите id элемента для изменения:",
                     new IDExistsValidator("Элемент с данным id не существует!", -1, productList));
             Product product = productList.get(id);
             Command cmd;
@@ -37,7 +36,7 @@ public class EditProductCommand extends Command {
         }
     }
 
-    class EditFoodCommand extends Command {
+    private class EditFoodCommand extends Command {
         Food food;
 
         EditFoodCommand(String title, Food food) {
@@ -56,7 +55,7 @@ public class EditProductCommand extends Command {
         }
     }
 
-    class  EditMedicineCommand extends Command {
+    private class  EditMedicineCommand extends Command {
         Medicine medicine;
 
         EditMedicineCommand(String title, Medicine medicine){

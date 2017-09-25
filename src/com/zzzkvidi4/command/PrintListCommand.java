@@ -1,5 +1,6 @@
 package com.zzzkvidi4.command;
 
+import com.zzzkvidi4.HelpUtils;
 import com.zzzkvidi4.Product;
 import com.zzzkvidi4.ProductList;
 
@@ -20,11 +21,6 @@ public class PrintListCommand extends Command {
 
     @Override
     public void execute() {
-        Iterator<Product> iterator = productList.iterator();
-        Product product;
-        while (iterator.hasNext()) {
-            product = iterator.next();
-            System.out.println(product.toString());
-        }
+        HelpUtils.printList(productList, System.out);
     }
 }

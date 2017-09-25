@@ -5,11 +5,13 @@ import com.zzzkvidi4.validator.BasicValidator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.util.Iterator;
 
-public class HelpUtils<T> {
+public class HelpUtils {
     private static String abortString = "";
 
-    public T getValueCLI(String title, BasicValidator<T> validator) throws AbortOperationException{
+    public static <T> T getValueCLI(String title, BasicValidator<T> validator) throws AbortOperationException{
         String buf;
         boolean isInputCorrect = false;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -35,5 +37,12 @@ public class HelpUtils<T> {
             }
         }
         return value;
+    }
+
+    public static void printList(ProductList list, PrintStream outputStream){
+        Iterator<Product> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            outputStream.println(iterator.next());
+        }
     }
 }

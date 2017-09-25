@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 public class ProductList {
     private ArrayList<Product> productList;
 
-    ProductList(){
+    public ProductList(){
         productList = new ArrayList<>();
     }
 
@@ -24,6 +24,13 @@ public class ProductList {
 
     public void removeByID(int id) throws IllegalArgumentException{
         productList.removeIf(product -> product.getId() == id);
+    }
+
+    public void addAll(ProductList list){
+        Iterator<Product> iterator = productList.iterator();
+        while (iterator.hasNext()) {
+            list.add(iterator.next());
+        }
     }
 
     public ProductList filter(Predicate<Product> predicate){

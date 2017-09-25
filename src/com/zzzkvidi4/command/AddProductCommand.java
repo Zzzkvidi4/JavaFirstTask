@@ -25,7 +25,6 @@ public class AddProductCommand extends Command {
 
     @Override
     public void execute(){
-        HelpUtils<Integer> intGetterCLI = new HelpUtils<>();
         CommandList commands = new CommandList();
         commands.addCommand(new AddMedicineCommand("Добавить новое лекарство."));
         commands.addCommand(new AddFoodCommand("Добавить новый продукт питания."));
@@ -33,7 +32,7 @@ public class AddProductCommand extends Command {
         do {
             commands.printCommandTitles("Меню: ");
             try {
-                cmdNumber = intGetterCLI.getValueCLI("Выберите один из пунктов меню: ", new IntegerBetweenBoundariesValidator("Число должно быть между 0 и " + commands.actualSize() + "!", 0, commands.actualSize()));
+                cmdNumber = HelpUtils.getValueCLI("Выберите один из пунктов меню: ", new IntegerBetweenBoundariesValidator("Число должно быть между 0 и " + commands.actualSize() + "!", 0, commands.actualSize()));
                 if ((cmdNumber >= 1) && (cmdNumber <= commands.actualSize())) {
                     commands.executeCommand(cmdNumber - 1);
                 }
@@ -44,7 +43,7 @@ public class AddProductCommand extends Command {
         } while (cmdNumber != 0);
     }
 
-    class AddMedicineCommand extends Command {
+    private class AddMedicineCommand extends Command {
         AddMedicineCommand(String title){
             super(title);
         }
@@ -56,12 +55,10 @@ public class AddProductCommand extends Command {
 
         @Override
         public void execute() {
-            HelpUtils<String> stringGetterCLI = new HelpUtils<>();
-            HelpUtils<Double> doubleGetterCLI = new HelpUtils<>();
             try {
-                String name = stringGetterCLI.getValueCLI("Введите название лекарства: ", new StringNotEmptyValidator("Название лекарства не должно быть пустым!"));
-                double price = doubleGetterCLI.getValueCLI("Введите цену лекарства: ", new DoubleGreaterZeroValidator("Цена не должна быть меньше нуля!"));
-                String category = stringGetterCLI.getValueCLI("Введите категорию лекарства: ", new StringNotEmptyValidator("Категория лекарства не должна быть пустой!"));
+                String name = HelpUtils.getValueCLI("Введите название лекарства: ", new StringNotEmptyValidator("Название лекарства не должно быть пустым!"));
+                double price = HelpUtils.getValueCLI("Введите цену лекарства: ", new DoubleGreaterZeroValidator("Цена не должна быть меньше нуля!"));
+                String category = HelpUtils.getValueCLI("Введите категорию лекарства: ", new StringNotEmptyValidator("Категория лекарства не должна быть пустой!"));
                 Medicine med = new Medicine();
                 med.setTitle(name);
                 med.setPrice(new BigDecimal(price));
@@ -74,7 +71,7 @@ public class AddProductCommand extends Command {
         }
     }
 
-    class AddFoodCommand extends Command {
+    private class AddFoodCommand extends Command {
         AddFoodCommand(String title){
             super(title);
         }
@@ -86,17 +83,14 @@ public class AddProductCommand extends Command {
 
         @Override
         public void execute() {
-            HelpUtils<String> stringGetterCLI = new HelpUtils<>();
-            HelpUtils<Double> doubleGetterCLI = new HelpUtils<>();
-            HelpUtils<Integer> intGetterCLI = new HelpUtils<>();
             try {
-                String name = stringGetterCLI.getValueCLI("Введите название еды: ", new StringNotEmptyValidator("Название еды не должно быть пустым!"));
-                double price = doubleGetterCLI.getValueCLI("Введите цену: ", new DoubleGreaterZeroValidator("Цена должна быть больше нуля!"));
-                int year = intGetterCLI.getValueCLI("Введите год производства: ", new IntegerGreaterZeroValidator("Год должен быть больше нуля!", -1));
-                int month = intGetterCLI.getValueCLI("Введите месяц производста: ", new IntegerBetweenBoundariesValidator("Месяц должен быть между 1 и 12!", 1, 12));
+                String name = HelpUtils.getValueCLI("Введите название еды: ", new StringNotEmptyValidator("Название еды не должно быть пустым!"));
+                double price = HelpUtils.getValueCLI("Введите цену: ", new DoubleGreaterZeroValidator("Цена должна быть больше нуля!"));
+                int year = HelpUtils.getValueCLI("Введите год производства: ", new IntegerGreaterZeroValidator("Год должен быть больше нуля!", -1));
+                int month = HelpUtils.getValueCLI("Введите месяц производста: ", new IntegerBetweenBoundariesValidator("Месяц должен быть между 1 и 12!", 1, 12));
                 Calendar date = new GregorianCalendar(year, month - 1, 1);
                 int maxDay = date.getActualMaximum(GregorianCalendar.DAY_OF_MONTH);
-                int day = intGetterCLI.getValueCLI("Введите день производства: ", new IntegerBetweenBoundariesValidator("День должен быть между 1 и " + maxDay + "!", 1, maxDay));
+                int day = HelpUtils.getValueCLI("Введите день производства: ", new IntegerBetweenBoundariesValidator("День должен быть между 1 и " + maxDay + "!", 1, maxDay));
                 date.set(GregorianCalendar.DAY_OF_MONTH, day);
                 Food food = new Food();
                 food.setTitle(name);
