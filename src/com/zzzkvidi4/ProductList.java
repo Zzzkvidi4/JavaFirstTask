@@ -27,9 +27,9 @@ public class ProductList {
     }
 
     public void addAll(ProductList list){
-        Iterator<Product> iterator = productList.iterator();
+        Iterator<Product> iterator = list.iterator();
         while (iterator.hasNext()) {
-            list.add(iterator.next());
+            add(iterator.next());
         }
     }
 

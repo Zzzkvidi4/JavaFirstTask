@@ -24,7 +24,7 @@ public class Food extends Product {
     private Calendar dateOfManufacture;
 
 
-    private Calendar getDateOfManufacture() {
+    public Calendar getDateOfManufacture() {
         return dateOfManufacture;
     }
 

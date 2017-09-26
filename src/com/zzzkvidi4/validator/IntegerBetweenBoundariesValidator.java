@@ -8,12 +8,6 @@ public class IntegerBetweenBoundariesValidator extends BasicValidator<Integer> {
         this.rightBound = rightBound;
     }
 
-    public IntegerBetweenBoundariesValidator(String validationFailsMsg, boolean isAbortAllowed, int leftBound, int rightBound){
-        super(validationFailsMsg, leftBound, isAbortAllowed);
-        this.leftBound = leftBound;
-        this.rightBound = rightBound;
-    }
-
     @Override
     public boolean validate(Integer value) {
         return (value >= leftBound) && (value <= rightBound);

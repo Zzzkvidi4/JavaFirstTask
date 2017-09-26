@@ -27,8 +27,11 @@ public class RemoveByIDCommand extends Command {
     @Override
     public void execute() {
         try{
-            int removeId = HelpUtils.getValueCLI("Введите id продукта для удаления",
-                    new IntegerGreaterZeroValidator("Id не может быть меньше нуля!", -1));
+            int removeId = HelpUtils.getValueCLI(
+                    "Введите id продукта для удаления: ",
+                    "abort",
+                    new IntegerGreaterZeroValidator("Id не может быть меньше нуля!", -1)
+            );
             productList.removeByID(removeId);
         }
         catch(AbortOperationException ex) {

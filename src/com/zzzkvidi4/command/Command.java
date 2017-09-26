@@ -1,6 +1,6 @@
 package com.zzzkvidi4.command;
 
-public abstract class Command {
+abstract class Command {
 
     Command(String title){
         this.title = title;
@@ -13,7 +13,9 @@ public abstract class Command {
         return title;
     }
 
-    public abstract boolean isEnabled();
+    public boolean isEnabled() {
+        return true;
+    }
 
     public abstract void execute();
 }
