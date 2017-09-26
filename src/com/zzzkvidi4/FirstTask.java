@@ -36,6 +36,7 @@ public class FirstTask {
         commands.addCommand(new AddProductCommand("Добавить продукт.", productList));
         commands.addCommand(new EditProductCommand("Изменить продукт.", productList));
         commands.addCommand(new RemoveByIDCommand("Удалить продукт по id.", productList));
+        commands.addCommand(new RemoveProductsByIDsCommand("Удалить продукты по списку id.", productList));
         commands.addCommand(new PrintListCommand("Показать список продуктов.", productList));
         commands.addCommand(new SortProductCommand("Отсортировать список по цене.", productList));
         commands.addCommand(new FilterByPriceCommand("Отфильтровать список по цене.", productList));
