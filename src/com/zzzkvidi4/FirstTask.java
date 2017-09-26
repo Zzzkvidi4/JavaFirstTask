@@ -38,6 +38,7 @@ public class FirstTask {
         commands.addCommand(new RemoveByIDCommand("Удалить продукт по id.", productList));
         commands.addCommand(new PrintListCommand("Показать список продуктов.", productList));
         commands.addCommand(new SortProductCommand("Отсортировать список по цене.", productList));
+        commands.addCommand(new FilterByPriceCommand("Отфильтровать список по цене.", productList));
         commands.addCommand(new ExitCommand("Выход"));
         HelpUtils.runCommandList("Меню: ", commands);
     }

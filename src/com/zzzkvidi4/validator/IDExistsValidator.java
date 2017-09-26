@@ -20,7 +20,7 @@ public class IDExistsValidator extends BasicValidator<Integer> {
         while ((flag) && (iterator.hasNext())){
             flag = iterator.next().getId() != value;
         }
-        return flag;
+        return !flag;
     }
 
     @Override

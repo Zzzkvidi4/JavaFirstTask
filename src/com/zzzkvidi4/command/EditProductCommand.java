@@ -23,7 +23,6 @@ public class EditProductCommand extends Command {
     @Override
     public void execute() {
         HelpUtils.printList(productList, System.out);
-        System.out.println("Введите id элемента для изменения: ");
         try {
             int id = HelpUtils.getValueCLI(
                     "Введите id элемента для изменения: ",
@@ -69,6 +68,8 @@ public class EditProductCommand extends Command {
             cmdList.addCommand(new ExitCommand("Назад."));
             int cmdNumber;
             do{
+                cmdList.printCommandTitles("Выберите один из пунктов меню изменения продукта:");
+                System.out.println("Текущее значение продукта: " + food);
                 cmdNumber = HelpUtils.getValueCLIWithoutAbort("--> ", new IntegerBetweenBoundariesValidator("Число должно быть между 1 и 7!", 1, 7));
                 cmdList.executeCommand(cmdNumber - 1);
             } while (cmdNumber != 7);
@@ -269,6 +270,8 @@ public class EditProductCommand extends Command {
             cmdList.addCommand(new ExitCommand("Назад."));
             int cmdNumber;
             do{
+                cmdList.printCommandTitles("Выберите один из пунктов меню изменения продукта:");
+                System.out.println("Текущее значение продукта: " + medicine);
                 cmdNumber = HelpUtils.getValueCLIWithoutAbort("--> ", new IntegerBetweenBoundariesValidator("Число должно быть между 1 и 5!", 1, 5));
                 cmdList.executeCommand(cmdNumber - 1);
             } while (cmdNumber != 5);
