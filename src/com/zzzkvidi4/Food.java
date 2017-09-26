@@ -18,7 +18,7 @@ public class Food extends Product {
 
     @Override
     public String toString() {
-        return getId() + " " + getTitle() + " " + getDateOfManufacture().get(GregorianCalendar.DAY_OF_MONTH) + "." + (dateOfManufacture.get(GregorianCalendar.MONTH) + 1) + "." + dateOfManufacture.get(GregorianCalendar.YEAR);
+        return "Тип: еда\r\nИдентификатор: " + getId() + "\r\nНазвание: " + getTitle() + "\r\nДата производства: " + getDateOfManufacture().get(GregorianCalendar.DAY_OF_MONTH) + "." + (dateOfManufacture.get(GregorianCalendar.MONTH) + 1) + "." + dateOfManufacture.get(GregorianCalendar.YEAR) + "\r\nЦена: " + getPrice() + "\r\n";
     }
 
     private Calendar dateOfManufacture;

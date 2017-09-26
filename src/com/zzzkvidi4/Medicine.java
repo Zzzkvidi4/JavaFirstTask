@@ -14,7 +14,7 @@ public class Medicine extends Product {
 
     @Override
     public String toString() {
-        return getId() + " " + getTitle() + " " + getPrice();
+        return "Тип: лекарство\r\nИдентификатор: " + getId() + "\r\nНазвание: " + getTitle() + "\r\nЦена: " + getPrice() + "\r\nКатегория: " + getCategory() + "\r\n";
     }
 
     private String category;
